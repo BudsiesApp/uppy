@@ -2,7 +2,6 @@ var sass = require('node-sass')
 var postcss = require('postcss')
 var autoprefixer = require('autoprefixer')
 var cssnano = require('cssnano')
-var safeImportant = require('postcss-safe-important')
 var chalk = require('chalk')
 var fs = require('fs')
 var path = require('path')
@@ -39,7 +38,7 @@ function compileCSS () {
   return new Promise(function (resolve) {
     sass.render({file: './src/scss/uppy.scss'}, function (err, sassResult) {
       if (err) handleErr(err)
-      postcss([ autoprefixer, safeImportant ])
+      postcss([ autoprefixer ])
         .process(sassResult.css, { from: path.join(__dirname, '../src/scss/uppy.scss') })
         .then(function (postCSSResult) {
           postCSSResult.warnings().forEach(function (warn) {
