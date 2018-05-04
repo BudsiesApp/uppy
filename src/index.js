@@ -18,6 +18,7 @@ const Dropbox = require('./plugins/Dropbox')
 const Instagram = require('./plugins/Instagram')
 const Url = require('./plugins/Url')
 const Webcam = require('./plugins/Webcam')
+const Facebook = require('./plugins/Facebook')
 
 // Progressindicators
 const StatusBar = require('./plugins/StatusBar')
@@ -48,6 +49,7 @@ module.exports = {
   GoogleDrive,
   Dropbox,
   Instagram,
+  Facebook,
   Url,
   FileInput,
   Tus,
