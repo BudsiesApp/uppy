@@ -326,7 +326,11 @@ class Uppy {
 
         // is this is a mime-type
         if (type.indexOf('/') > -1) {
-          if (!file.type) return false
+          if (!file.type) {
+            if (!file.name.match(/.heic|.heif/)) {
+              return false;
+            }
+          }
           return match(file.type, type)
         }
 
