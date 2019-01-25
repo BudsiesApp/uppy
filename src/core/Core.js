@@ -322,23 +322,20 @@ class Uppy {
 
     if (allowedFileTypes) {
       const isCorrectFileType = allowedFileTypes.filter((type) => {
-        // if (!file.type) return false
-
-        // is this is a mime-type
-        if (type.indexOf('/') > -1) {
-          if (!file.type) {
-            if (!file.name.match(/.heic|.heif/)) {
-              return false;
-            }
-          }
-          return match(file.type, type)
-        }
 
         // otherwise this is likely an extension
         if (type[0] === '.') {
           if (file.extension === type.substr(1)) {
             return file.extension
           }
+        }
+
+        // if (!file.type) return false
+
+        // is this is a mime-type
+        if (type.indexOf('/') > -1) {
+          if (!file.type) return false;
+          return match(file.type, type)
         }
       }).length > 0
 
