@@ -322,10 +322,9 @@ class Uppy {
 
     if (allowedFileTypes) {
       const isCorrectFileType = allowedFileTypes.filter((type) => {
-
         // otherwise this is likely an extension
         if (type[0] === '.') {
-          if (file.extension === type.substr(1)) {
+          if (file.extension.toLowerCase() === type.substr(1)) {
             return file.extension
           }
         }
@@ -334,7 +333,7 @@ class Uppy {
 
         // is this is a mime-type
         if (type.indexOf('/') > -1) {
-          if (!file.type) return false;
+          if (!file.type) return false
           return match(file.type, type)
         }
       }).length > 0
